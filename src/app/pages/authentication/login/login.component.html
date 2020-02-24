@@ -1,0 +1,34 @@
+<!-- Page Content -->
+<div class="vertical-center">
+  <nb-card class="form-login">
+    <nb-card-header>Iniciar sesión</nb-card-header>
+    <nb-card-body>
+      <form (ngSubmit)="login(f)" #f="ngForm">
+        <div class="form-group row">
+          <label for="inputEmail1" class="col-sm-3 col-form-label">Email</label>
+          <div class="col-sm-9">
+            <input type="email" name="email" [ngModel]="email" class="form-control" id="inputEmail1"
+                   placeholder="Email">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputPassword2" class="col-sm-3 col-form-label">Contraseña</label>
+          <div class="col-sm-9">
+            <input type="password" name="pass" [ngModel]="pass" class="form-control" id="inputPassword2"
+                   placeholder="Contraseña">
+          </div>
+        </div>
+        <ng-container *ngIf="error">
+          <p class="error-message">{{error}}</p>
+        </ng-container>
+        <div class="form-group row">
+          <div class="offset-sm-3 col-sm-9">
+            <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Iniciar sesión</button>
+          </div>
+        </div>
+      </form>
+
+      <hr style="border-top: 1px solid #eee;">
+    </nb-card-body>
+  </nb-card>
+</div>

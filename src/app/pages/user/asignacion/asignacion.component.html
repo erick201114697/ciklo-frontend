@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card [nbSpinner]="findFormSpinner" nbSpinnerStatus="primary">
+      <nb-card-header>Asignación de paquetes por usuario</nb-card-header>
+
+      <nb-card-body>
+        <div class="container">
+          <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>Usuario</th>
+              <th>Paquete</th>
+              <th>Camion y piloto</th>
+              <th>Origen</th>
+              <th>Destino</th>
+              <th colspan="2">
+                <button id="showForm" class="btn btn-success btn-xs"
+                        (click)="nuevo()">Nuevo
+                </button>
+              </th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr *ngFor="let asignacion of asignaciones">
+              <td>{{asignacion.usuario.mail}}</td>
+              <td>{{asignacion.paquete.nombre + ' / '+ asignacion.paquete.descripcion}}</td>
+              <td>{{asignacion.camion.modelo + ' / ' + asignacion.camion.placa + ' / ' + asignacion.piloto.nombre}}</td>
+              <td>{{asignacion.direccionOrigen}}</td>
+              <td>{{asignacion.direccionDestino}}</td>
+              <td>
+                <button class="btn btn-danger btn-xs"
+                        (click)="deleteDocument(asignacion)">Eliminar
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+

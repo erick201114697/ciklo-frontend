@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>transportes Ciklo SA</nb-card-header>
+    </nb-card>
+  </div>
+</div>
+<form (ngSubmit)="register(f)" #f="ngForm">
+  <nb-card>
+    <nb-card-header>Asignación de piloto a camion</nb-card-header>
+    <nb-card-body>
+
+      <div class="form-group row">
+        <label for="piloto" class="col-sm-3 col-form-label">Piloto</label>
+        <div class="col-sm-9">
+          <nb-select required name="piloto" class="form-control" [ngModel]="piloto" id="piloto"
+                     placeholder="Seleccione un piloto">
+            <nb-option *ngFor="let pil of pilotos"
+                       [value]="pil">{{ pil.nombre + ' /dpi: ' + pil.dpi + ' /edad:' + pil.edad}}</nb-option>
+          </nb-select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Camion</label>
+        <div class="col-sm-9">
+          <nb-select required name="camion" class="form-control" [ngModel]="camion" placeholder="Seleccione un camion">
+            <nb-option *ngFor="let cam of camiones"
+                       [value]="cam">{{ cam.modelo + ' / ' + cam.placa + ' / ' + cam.tipo}}</nb-option>
+          </nb-select>
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+
+  <nb-card>
+    <nb-card-header>Designación de Paquete a Origen</nb-card-header>
+    <nb-card-body>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Paquete</label>
+        <div class="col-sm-9">
+          <nb-select required name="paquete" class="form-control" [ngModel]="paquete"
+                     placeholder="Seleccione un paquetre a enviar">
+            <nb-option *ngFor="let paq of paquetes"
+                       [value]="paq">{{ paq.nombre + ' / ' + paq.descripcion }}</nb-option>
+          </nb-select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Origen</label>
+        <div class="col-sm-9">
+          <input required name="direccionOrigen" [ngModel]="origen" type="text" class="form-control"
+                 placeholder="Ingrese el origen">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Destino</label>
+        <div class="col-sm-9">
+          <input required name="direccionDestino" [ngModel]="destino" type="text" class="form-control"
+                 placeholder="Ingrese el origen">
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+
+  <div class="row">
+    <div class="col-md-12">
+      <nb-card>
+        <nb-card-header>
+          <div class="form-group row">
+            <div class="offset-sm-3 col-sm-9">
+              <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Asignar solicitud de envio de
+                paquete
+              </button>
+            </div>
+          </div>
+        </nb-card-header>
+      </nb-card>
+    </div>
+  </div>
+</form>
